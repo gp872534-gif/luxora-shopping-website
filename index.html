@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUXORA | Your Style, Your Story</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f6f2eb;color:#20201c;font-family:'DM Sans',sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+:root{--accent:#ad6047;--ink:#20201c;--paper:#f6f2eb;--line:#e5ded4}
+.wrap{max-width:1250px;margin:auto;padding:0 30px}
+.announcement{background:#20201c;color:white;text-align:center;padding:10px;font-size:10px;letter-spacing:1.5px}
+.announcement b{color:#e5ac92}
+header{position:sticky;top:0;z-index:10;background:#f6f2ebed;backdrop-filter:blur(15px);border-bottom:1px solid #ddd5ca}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:24px;font-weight:700;letter-spacing:4px}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:30px}
+nav a{font-size:10px;letter-spacing:1.4px;text-transform:uppercase}
+nav a:hover{color:var(--accent)}
+.actions{display:flex;gap:15px;align-items:center}
+.icon{background:none;border:0;font-size:20px;position:relative}
+.count{position:absolute;top:-5px;right:-7px;background:var(--accent);color:white;border-radius:50%;font-size:9px;width:16px;height:16px;display:grid;place-items:center}
+.menu{display:none}
+.hero{padding-top:25px}
+.hero-box{display:grid;grid-template-columns:1fr 1fr;background:#e3d8ca;min-height:490px;overflow:hidden}
+.hero-copy{padding:55px 10%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.eyebrow,.kicker{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font:500 clamp(48px,6vw,75px)/1.03 'Playfair Display',serif;margin:20px 0;letter-spacing:-2px}
+.hero-copy p{font-size:13px;line-height:1.9;color:#625c54;max-width:360px}
+.cta{display:inline-block;background:var(--ink);color:white;padding:15px 20px;margin-top:20px;font-size:10px;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--ink)}
+.cta:hover{background:transparent;color:var(--ink)}
+.hero-img{position:relative;min-height:490px}
+.hero-img img{width:100%;height:100%;object-fit:cover;position:absolute}
+.stamp{position:absolute;bottom:22px;left:22px;border-radius:50%;width:85px;height:85px;background:#fffdf8;display:grid;place-items:center;text-align:center;font:13px 'Playfair Display';transform:rotate(-10deg)}
+.perks{display:grid;grid-template-columns:repeat(4,1fr);padding:23px 0 50px;border-bottom:1px solid var(--line)}
+.perks div{text-align:center;font-size:10px;color:#5e5a53}
+.perks b{display:block;font-size:17px;color:var(--accent);margin-bottom:5px}
+.section{padding:25px 0 65px}
+.heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:24px;gap:15px}
+h2{font:500 clamp(30px,4vw,43px)/1.15 'Playfair Display',serif;margin:9px 0}
+.link{font-size:10px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--accent);padding-bottom:5px}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
+.category{border:0;background:none;text-align:left;padding:0}
+.category .pic{height:180px;overflow:hidden;background:#e7ded2}
+.category img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.category:hover img{transform:scale(1.06)}
+.catname{display:flex;justify-content:space-between;padding:12px 0;font-size:11px;font-weight:600}
+.catname span{color:var(--accent)}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:25px 0 20px}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{border:1px solid #d5cec4;border-radius:30px;background:transparent;padding:9px 13px;font-size:10px}
+.chip.active,.chip:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.tools{display:flex;gap:8px}
+.tools input,.tools select{padding:10px;border:1px solid #d5cec4;background:#fffaf4;font-size:10px;outline:none}
+.tools input{width:175px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 15px}
+.photo{height:280px;position:relative;overflow:hidden;background:#e9e1d7}
+.photo img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.product:hover .photo img{transform:scale(1.05)}
+.tag{position:absolute;top:10px;left:10px;background:#fffdf8;padding:6px 8px;font-size:8px;letter-spacing:1px;text-transform:uppercase}
+.heart{position:absolute;top:9px;right:9px;border:0;border-radius:50%;width:30px;height:30px;background:#fffdf8;font-size:16px}
+.heart.liked{color:var(--accent)}
+.add{position:absolute;bottom:9px;left:9px;right:9px;padding:11px;background:#fffdf2ed;border:0;font-size:9px;letter-spacing:1px;text-transform:uppercase;transform:translateY(60px);transition:.2s}
+.product:hover .add{transform:translateY(0)}
+.info{padding:11px 1px}
+.meta{display:flex;justify-content:space-between;gap:5px}
+.info h3{font-size:11px;margin:0 0 5px}
+.type{font-size:9px;color:#858078}
+.price{font-size:11px;font-weight:700;white-space:nowrap}
+.old{font-size:9px;color:#999;text-decoration:line-through;font-weight:400}
+.swatches{display:flex;gap:5px;margin-top:9px}
+.swatches i{width:9px;height:9px;border-radius:50%;border:1px solid #0002}
+.empty{grid-column:1/-1;text-align:center;padding:45px;border:1px dashed var(--line);color:#777}
+.editorial{display:grid;grid-template-columns:1fr 1fr;background:#e2d8cc;margin:0 0 65px}
+.editorial img{width:100%;height:370px;object-fit:cover;display:block}
+.editorial-copy{padding:40px 10%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.editorial-copy p{font-size:11px;line-height:1.9;color:#625c54;max-width:350px}
+.newsletter{background:#e9e1d6;text-align:center;padding:48px 20px;margin-bottom:65px}
+.newsletter h2{font-size:34px}
+.newsletter p{font-size:11px;color:#706a62}
+.signup{display:flex;max-width:410px;margin:20px auto 0;border-bottom:1px solid #aaa}
+.signup input{flex:1;min-width:0;border:0;background:transparent;padding:12px 4px;font-size:11px;outline:0}
+.signup button{border:0;background:none;font-size:10px;text-transform:uppercase;letter-spacing:1px}
+footer{background:#20201c;color:#f8f3e9;padding:45px 0 20px}
+.footgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:25px;padding-bottom:35px}
+.footgrid h4{font-size:10px;letter-spacing:1.5px;text-transform:uppercase}
+.footgrid a,.footgrid p{display:block;color:#b8b2a9;font-size:10px;line-height:1.9}
+.about{max-width:260px}
+.copyright{border-top:1px solid #ffffff25;padding-top:17px;color:#aaa;font-size:9px;display:flex;justify-content:space-between}
+.overlay{position:fixed;inset:0;background:#0007;z-index:30;opacity:0;pointer-events:none;transition:.25s}
+.overlay.show{opacity:1;pointer-events:auto}
+.cart{position:fixed;z-index:31;right:0;top:0;height:100%;width:min(410px,100%);background:#fffdf8;transform:translateX(105%);transition:.3s;display:flex;flex-direction:column}
+.cart.open{transform:translateX(0)}
+.carthead{display:flex;justify-content:space-between;padding:22px;border-bottom:1px solid var(--line)}
+.carthead h2{font-size:25px;margin:0}
+.close{border:0;background:none;font-size:23px}
+.cartitems{overflow:auto;flex:1;padding:8px 20px}
+.cartrow{display:grid;grid-template-columns:70px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cartrow img{width:70px;height:83px;object-fit:cover}
+.cartrow h4{font-size:11px;margin:3px 0 7px}
+.cartrow p{font-size:10px;color:#777;margin:0 0 8px}
+.qty{display:flex;align-items:center;gap:9px;font-size:10px}
+.qty button{width:22px;height:22px;border:1px solid var(--line);background:none}
+.remove{border:0;background:none;color:var(--accent);font-size:9px;text-decoration:underline}
+.cartfoot{padding:20px;border-top:1px solid var(--line)}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:13px;margin-bottom:7px}
+.hint{font-size:9px;color:#777;margin-bottom:14px}
+.checkout{width:100%;padding:14px;background:var(--ink);color:white;border:0;font-size:10px;letter-spacing:1px;text-transform:uppercase}
+.cartempty{text-align:center;padding:65px 12px;color:#777;font-size:12px}
+.toast{position:fixed;z-index:50;bottom:20px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:white;padding:12px 17px;font-size:10px;opacity:0;transition:.2s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.wrap{padding:0 20px}.products{grid-template-columns:repeat(3,1fr)}.photo{height:240px}.category .pic{height:145px}.footgrid{grid-template-columns:1.5fr 1fr 1fr}.footgrid>div:last-child{display:none}}
+@media(max-width:620px){.wrap{padding:0 14px}.nav{height:64px}.logo{font-size:20px}nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--paper);padding:20px;flex-direction:column;gap:18px}nav.show{display:flex}.menu{display:block}.actions{gap:8px}.hero{padding-top:13px}.hero-box{grid-template-columns:1fr}.hero-copy{padding:35px 23px}.hero-img{min-height:280px}h1{font-size:48px}.perks{grid-template-columns:repeat(2,1fr);gap:16px;padding:18px 0 38px}.section{padding:18px 0 45px}.heading{align-items:flex-start;flex-direction:column}.heading h2{font-size:33px}.categories{grid-template-columns:repeat(2,1fr);gap:12px}.category .pic{height:175px}.category:last-child{display:none}.tools{width:100%}.tools input{flex:1;width:0}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 10px}.photo{height:210px}.add{transform:none;padding:9px}.info h3{font-size:10px}.type{font-size:8px}.price{font-size:10px}.editorial{grid-template-columns:1fr;margin-bottom:45px}.editorial img{height:240px}.editorial-copy{padding:28px 22px}.newsletter{padding:38px 15px;margin-bottom:45px}.newsletter h2{font-size:29px}.footgrid{grid-template-columns:1fr 1fr}.footgrid>div:first-child{grid-column:1/-1}.copyright{flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+<div class="announcement">A little treat for you — <b>FREE SHIPPING OVER ₹1,999</b> · Discover the edit</div>
+<header><div class="wrap nav"><a class="logo" href="#home">LUX<span>O</span>RA.</a>
+<nav id="nav"><a href="#home">Home</a><a href="#categories">Categories</a><a href="#shop">New arrivals</a><a href="#story">Our story</a></nav>
+<div class="actions"><button class="icon menu" id="menu" aria-label="Menu">☰</button><button class="icon" id="searchJump" aria-label="Search">⌕</button><button class="icon" id="cartOpen" aria-label="Cart">♧<span class="count" id="count">0</span></button></div></div></header>
+<main id="home"><div class="wrap hero"><div class="hero-box"><div class="hero-copy"><div class="eyebrow">The everyday edit · 2026</div><h1>Find your<br>kind of <i>beautiful.</i></h1><p>Thoughtfully picked pieces for the way you live, move and express yourself. A little more you, in every detail.</p><a class="cta" href="#shop">Shop the collection ↗</a></div><div class="hero-img"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85" alt="Fashion collection"><div class="stamp">Curated<br>for you ✳</div></div></div></div>
+<div class="wrap"><div class="perks"><div><b>✳</b>Thoughtfully curated</div><div><b>♧</b>Everyday style</div><div><b>↗</b>Fresh finds, often</div><div><b>♡</b>Made for your story</div></div>
+<section class="section" id="categories"><div class="heading"><div><div class="kicker">Explore your mood</div><h2>Shop by category</h2></div><a class="link" href="#shop">View all ↗</a></div><div class="categories">
+<button class="category" data-cat="Fashion"><div class="pic"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" alt="Fashion"></div><div class="catname">Fashion <span>↗</span></div></button>
+<button class="category" data-cat="Beauty"><div class="pic"><img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=80" alt="Beauty"></div><div class="catname">Beauty <span>↗</span></div></button>
+<button class="category" data-cat="Accessories"><div class="pic"><img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=600&q=80" alt="Accessories"></div><div class="catname">Accessories <span>↗</span></div></button>
+<button class="category" data-cat="Footwear"><div class="pic"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" alt="Footwear"></div><div class="catname">Footwear <span>↗</span></div></button>
+<button class="category" data-cat="Lifestyle"><div class="pic"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80" alt="Lifestyle"></div><div class="catname">Lifestyle <span>↗</span></div></button>
+</div></section>
+<section class="section" id="shop"><div class="heading"><div><div class="kicker">The latest finds</div><h2>Freshly picked for you</h2><p style="font-size:11px;color:#777">Everyday favourites, with a little extra something.</p></div><span class="link" id="results">12 pieces</span></div>
+<div class="toolbar"><div class="chips" id="chips"><button class="chip active" data-filter="All">All pieces</button><button class="chip" data-filter="Fashion">Fashion</button><button class="chip" data-filter="Beauty">Beauty</button><button class="chip" data-filter="Accessories">Accessories</button><button class="chip" data-filter="Footwear">Footwear</button><button class="chip" data-filter="Lifestyle">Lifestyle</button></div><div class="tools"><input id="search" type="search" placeholder="Search collection..." aria-label="Search"><select id="sort" aria-label="Sort"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name: A to Z</option></select></div></div><div class="products" id="products"></div></section>
+<section class="editorial" id="story"><div><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85" alt="Fashion wardrobe"></div><div class="editorial-copy"><div class="kicker">A note from LUXORA</div><h2>Less noise.<br><i>More you.</i></h2><p>Personal style is not about following every trend. It is about finding the details that feel like you — considered, comfortable and full of character.</p><a class="cta" href="#categories">Explore the edit ↗</a></div></section>
+<section class="newsletter"><div class="kicker">The LUXORA letter</div><h2>A little inspiration, delivered.</h2><p>New arrivals, thoughtful edits and notes from our world.</p><form class="signup" id="signup"><input type="email" id="email" placeholder="Your email address" required aria-label="Email"><button>Join us ↗</button></form></section></div></main>
+<footer><div class="wrap"><div class="footgrid"><div><div class="logo">LUX<span>O</span>RA.</div><p class="about">A curated little corner for style, self-expression and the pieces that make everyday feel special.</p></div><div><h4>Explore</h4><a href="#shop">New arrivals</a><a href="#categories">Categories</a><a href="#story">Our story</a></div><div><h4>Help</h4><a href="#contact">Contact</a><a href="#contact">Shipping info</a><a href="#contact">FAQs</a></div><div id="contact"><h4>Stay connected</h4><p>hello@luxora.example</p><p>Instagram · Pinterest</p><p>Student demo store</p></div></div><div class="copyright"><span>© 2026 LUXORA. Student frontend demo.</span><span>Made with curiosity & care ✳</span></div></div></footer>
+<div class="overlay" id="overlay"></div><aside class="cart" id="cart"><div class="carthead"><h2>Your bag <span id="cartnum">(0)</span></h2><button class="close" id="close">×</button></div><div class="cartitems" id="cartitems"></div><div class="cartfoot"><div class="total"><span>Subtotal</span><span id="subtotal">₹0</span></div><div class="hint">Shipping and taxes calculated at checkout.</div><button class="checkout" id="checkout">Continue to checkout · Demo</button></div></aside><div class="toast" id="toast"></div>
+<script>
+const data=[
+[1,"The Sunday Shirt","Relaxed cotton poplin","Fashion",1499,1899,"Bestseller","https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=700&q=80",["#e9e2d6","#343a34","#b7a18b"]],
+[2,"Everyday Tote","Soft structured carryall","Accessories",1199,1499,"New","https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=700&q=80",["#b38b68","#e2d8c8","#292925"]],
+[3,"Dew Drop Serum","Hydrating skin ritual","Beauty",899,1099,"Loved","https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80",["#e5cbb5"]],
+[4,"City Walk Sneakers","Lightweight everyday pair","Footwear",2299,2799,"New","https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80",["#b13e36","#f0eee8"]],
+[5,"Golden Hour Hoops","Minimal gold-tone finish","Accessories",699,899,"Bestseller","https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80",["#cba45b"]],
+[6,"The Soft Knit","A cosy layer for slow days","Fashion",1899,2299,"Limited edit","https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=700&q=80",["#c7b9a7","#6c746a","#ddd8cf"]],
+[7,"Calm Space Candle","Warm amber · 180 g","Lifestyle",799,999,"Loved","https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=700&q=80",["#d9c5a9"]],
+[8,"Weekend Slides","Easy comfort, all day","Footwear",1299,1599,"New","https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=80",["#d5b8a1","#514b45"]],
+[9,"Cloud Nine Cream","Daily moisture boost","Beauty",749,949,"Everyday","https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=80",["#eee3d4"]],
+[10,"Sculpt Mini Bag","A little bag, big mood","Accessories",1799,2199,"Bestseller","https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80",["#786453","#222"]],
+[11,"Linen Ease Trousers","Breezy relaxed fit","Fashion",1699,1999,"New","https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=700&q=80",["#d9c8ad","#6b6c5c"]],
+[12,"Sunday Journal Set","Make room for ideas","Lifestyle",599,799,"Thoughtful pick","https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=700&q=80",["#c9b79f"]]
+].map(x=>({id:x[0],name:x[1],type:x[2],cat:x[3],price:x[4],old:x[5],tag:x[6],img:x[7],colors:x[8]}));
+let filter="All",bag={},likes=new Set();
+const $=s=>document.querySelector(s),cash=n=>"₹"+n.toLocaleString("en-IN");
+function toast(t){let e=$("#toast");e.textContent=t;e.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>e.classList.remove("show"),2000)}
+function render(){let q=$("#search").value.toLowerCase(),arr=data.filter(p=>(filter==="All"||p.cat===filter)&&(`${p.name} ${p.type} ${p.cat}`.toLowerCase().includes(q)));let s=$("#sort").value;if(s==="low")arr.sort((a,b)=>a.price-b.price);if(s==="high")arr.sort((a,b)=>b.price-a.price);if(s==="name")arr.sort((a,b)=>a.name.localeCompare(b.name));$("#results").textContent=arr.length+" pieces";$("#products").innerHTML=arr.length?arr.map(p=>`<article class="product"><div class="photo"><img src="${p.img}" alt="${p.name}" loading="lazy"><span class="tag">${p.tag}</span><button class="heart ${likes.has(p.id)?"liked":""}" onclick="like(${p.id},this)" aria-label="Wishlist">${likes.has(p.id)?"♥":"♡"}</button><button class="add" onclick="add(${p.id})">＋ Add to bag</button></div><div class="info"><div class="meta"><div><h3>${p.name}</h3><div class="type">${p.type}</div></div><div class="price"><span class="old">${cash(p.old)}</span> ${cash(p.price)}</div></div><div class="swatches">${p.colors.map(c=>`<i style="background:${c}"></i>`).join("")}</div></div></article>`).join(""):`<div class="empty">No products found. Try another search or category.</div>`}
+function like(id,b){if(likes.has(id)){likes.delete(id);b.textContent="♡";b.classList.remove("liked");toast("Removed from wishlist")}else{likes.add(id);b.textContent="♥";b.classList.add("liked");toast("Saved to wishlist ♡")}}
+function add(id){bag[id]=(bag[id]||0)+1;update();toast("Added to your bag ✓")}
+function qty(id,n){bag[id]=(bag[id]||0)+n;if(bag[id]<=0)delete bag[id];update()}
+function remove(id){delete bag[id];update()}
+function update(){let rows=Object.entries(bag),n=rows.reduce((a,[,q])=>a+q,0),sum=rows.reduce((a,[id,q])=>a+data.find(p=>p.id==id).price*q,0);$("#count").textContent=n;$("#cartnum").textContent="("+n+")";$("#subtotal").textContent=cash(sum);$("#cartitems").innerHTML=rows.length?rows.map(([id,q])=>{let p=data.find(x=>x.id==id);return `<div class="cartrow"><img src="${p.img}" alt="${p.name}"><div><h4>${p.name}</h4><p>${cash(p.price)}</p><div class="qty"><button onclick="qty(${id},-1)">−</button>${q}<button onclick="qty(${id},1)">+</button></div></div><button class="remove" onclick="remove(${id})">Remove</button></div>`}).join(""):`<div class="cartempty">♡<br><br>Your bag is waiting for a little something.</div>`}
+function openCart(){$("#cart").classList.add("open");$("#overlay").classList.add("show");document.body.style.overflow="hidden"}
+function closeCart(){$("#cart").classList.remove("open");$("#overlay").classList.remove("show");document.body.style.overflow=""}
+$("#cartOpen").onclick=openCart;$("#close").onclick=closeCart;$("#overlay").onclick=closeCart;
+$("#search").oninput=render;$("#sort").onchange=render;
+$("#searchJump").onclick=()=>{$("#shop").scrollIntoView({behavior:"smooth"});setTimeout(()=>$("#search").focus(),300)};
+$("#chips").onclick=e=>{let b=e.target.closest("[data-filter]");if(!b)return;filter=b.dataset.filter;document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c===b));render()};
+document.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{filter=b.dataset.cat;document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c.dataset.filter===filter));render();$("#shop").scrollIntoView({behavior:"smooth"})});
+$("#menu").onclick=()=>$("#nav").classList.toggle("show");
+document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>$("#nav").classList.remove("show"));
+$("#checkout").onclick=()=>toast(Object.keys(bag).length?"Demo checkout — no real payment processed.":"Your bag is empty");
+$("#signup").onsubmit=e=>{e.preventDefault();toast("Thanks for joining LUXORA!");$("#email").value=""};
+render();update();
+</script>
+</body>
+</html>
